@@ -64,8 +64,10 @@
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 30px;
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .photo-container {
             position: relative;
@@ -74,6 +76,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
             aspect-ratio: 1;
+            max-width: 300px;
+            margin: 0 auto;
         }
         .photo-container:hover {
             transform: scale(1.05);
@@ -213,6 +217,23 @@
 
         .separator::before { left: -25px; }
         .separator::after { right: -25px; }
+
+        /* Ajout d'un conteneur pour mieux gérer la disposition */
+        .photos-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Style pour le titre de la section photos */
+        .photos-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #ff1493;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -240,22 +261,25 @@
         I love you more deeply than words could ever express.
     </div>
 
-    <div class="photo-grid">
-        <div class="photo-container">
-            <img src="1.jpg" alt="Moment précieux 1">
-            <div class="photo-overlay">BURGER TOGETHER</div>
-        </div>
-        <div class="photo-container">
-            <img src="2.jpg" alt="Moment précieux 2">
-            <div class="photo-overlay">CHILLING TOGETHER</div>
-        </div>
-        <div class="photo-container">
-            <img src="3.jpg" alt="Moment précieux 3">
-            <div class="photo-overlay">YOUR BIRTHDAY</div>
-        </div>
-        <div class="photo-container">
-            <img src="4.jpg" alt="Moment précieux 4">
-            <div class="photo-overlay">PREPARING TIME</div>
+    <div class="photos-section">
+        <div class="photo-grid">
+            <h3 class="photos-title">MOMENTS</h3>
+            <div class="photo-container">
+                <img src="1.jpg" alt="Moment précieux 1">
+                <div class="photo-overlay">BURGER TOGETHER</div>
+            </div>
+            <div class="photo-container">
+                <img src="2.jpg" alt="Moment précieux 2">
+                <div class="photo-overlay">COFFEE TIME</div>
+            </div>
+            <div class="photo-container">
+                <img src="3.jpg" alt="Moment précieux 3">
+                <div class="photo-overlay">QUEEN'S BIRTHDAY</div>
+            </div>
+            <div class="photo-container">
+                <img src="4.jpg" alt="Moment précieux 4">
+                <div class="photo-overlay">PREPARING TIME</div>
+            </div>
         </div>
     </div>
 </body>
