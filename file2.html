@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Notre Histoire d'Amour</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
+        .heart-section {
+            position: relative;
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+        .heart {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            animation: pulse 1.5s ease infinite;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 240px;
+            background-color: rgba(255, 20, 147, 0.8);
+            border-radius: 150px 150px 0 0;
+        }
+        .heart::before {
+            transform: rotate(-45deg);
+            transform-origin: 100% 100%;
+        }
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 0 100%;
+        }
+        .message {
+            position: absolute;
+            text-align: center;
+            color: white;
+            z-index: 1;
+            width: 280px;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .photo-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .photo-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+        }
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-container:hover .photo-overlay {
+            opacity: 1;
+        }
+        .names {
+            font-size: 32px;
+            color: #ff1493;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            grid-column: 1 / -1;
+        }
+        .love-quote {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            grid-column: 1 / -1;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.8;
+            color: #333;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .photos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            padding: 20px;
+        }
+        
+        .photo-item {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .photo-text {
+            font-size: 24px;
+            color: #ff1493;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 48px;
+            color: white;
+            margin: 0;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+        }
+
+        .heart-icon {
+            font-size: 30px;
+            margin: 0 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        /* Ajout d'un séparateur décoratif */
+        .separator {
+            width: 150px;
+            height: 3px;
+            background: white;
+            margin: 15px auto;
+            position: relative;
+        }
+
+        .separator::before, .separator::after {
+            content: '❀';
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .separator::before { left: -25px; }
+        .separator::after { right: -25px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Notre Histoire d'Amour <span class="heart-icon">❤️</span></h1>
+        <div class="separator"></div>
+        <p class="subtitle">Un amour qui grandit chaque jour</p>
+    </div>
+
+    <div class="photos-container">
+        <div class="photo-item">
+            <div class="photo-text">Forever & Always ❤️</div>
+            <img src="l.jpg" alt="lovely">
+        </div>
+        <div class="photo-item">
+            <div class="photo-text">Could be us❤️</div>
+            <img src="k.jpg" alt="lovely">
+        </div>
+    </div>
+    <div class="love-quote">
+        Every moment with you feels like a beautiful dream I never want to wake up from.<br>
+        Your smile brightens even my darkest days, and your touch fills my heart with warmth.<br>
+        In your eyes, I find my home, and in your arms, I find my peace.<br>
+        With you, every day feels like a new chapter in a love story I never want to end.<br>
+        I love you more deeply than words could ever express.
+    </div>
+
+    <div class="photo-grid">
+        <div class="photo-container">
+            <img src="1.jpg" alt="Moment précieux 1">
+            <div class="photo-overlay">BURGER TOGETHER</div>
+        </div>
+        <div class="photo-container">
+            <img src="2.jpg" alt="Moment précieux 2">
+            <div class="photo-overlay">CHILLING TOGETHER</div>
+        </div>
+        <div class="photo-container">
+            <img src="3.jpg" alt="Moment précieux 3">
+            <div class="photo-overlay">YOUR BIRTHDAY</div>
+        </div>
+        <div class="photo-container">
+            <img src="4.jpg" alt="Moment précieux 4">
+            <div class="photo-overlay">PREPARING TIME</div>
+        </div>
+    </div>
+</body>
+</html> 
